@@ -594,7 +594,7 @@ void Testbed::imgui() {
 			}
 		}
 		if (ImGui::BeginPopupModal("Snapshot load error", NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
-			ImGui::Text(snapshot_load_error_string.c_str());
+			ImGui::Text("%s", snapshot_load_error_string.c_str());
 			if (ImGui::Button("OK", ImVec2(120, 0))) {
 				ImGui::CloseCurrentPopup();
 			}
@@ -1703,7 +1703,15 @@ void Testbed::reset_network() {
 	}
 }
 
-Testbed::Testbed(ETestbedMode mode) : m_testbed_mode(mode) {
+Testbed::Testbed(ETestbedMode mode)
+: m_testbed_mode(mode)
+{
+	uint32_t compute_capability = cuda_compute_capability();
+	if (compute_capability < MIN_GPU_ARCH) {
+		tlog::warning() << "Insufficient compute capability " << compute_capability << " detected.";
+		tlog::warning() << "This program was compiled for >=" << MIN_GPU_ARCH << " and may thus behave unexpectedly.";
+	}
+
 	m_network_config = {
 		{"loss", {
 			{"otype", "L2"}

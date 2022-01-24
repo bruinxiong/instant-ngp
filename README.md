@@ -17,9 +17,11 @@ For business inquiries, please visit our website and submit the form: [NVIDIA Re
 
 ## Requirements
 
-- Both Windows and Linux are supported.
 - An __NVIDIA GPU__; tensor cores increase performance when available. All shown results come from an RTX 3090.
-- __[CUDA](https://developer.nvidia.com/cuda-toolkit) v10.2 or higher__, a __C++14__ capable compiler, and __[CMake](https://cmake.org/) v3.19 or higher__.
+- A __C++14__ capable compiler. The following choices are recommended and have been tested:
+  - __Windows:__ Visual Studio 2019
+  - __Linux:__ GCC/G++ 7.5 or higher
+- __[CUDA](https://developer.nvidia.com/cuda-toolkit) v10.2 or higher__ and __[CMake](https://cmake.org/) v3.19 or higher__.
 - __(optional) [Python](https://www.python.org/) 3.7 or higher__ for interactive bindings. Also, run `pip install -r requirements.txt`.
   - On some machines, `pyexr` refuses to install via `pip`. This can be resolved by installing OpenEXR from [here](https://www.lfd.uci.edu/~gohlke/pythonlibs/#openexr).
 - __(optional) [OptiX](https://developer.nvidia.com/optix) 7.3 or higher__ for faster mesh SDF training. Set the environment variable `OptiX_INSTALL_DIR` to the installation directory if it is not discovered automatically.
@@ -47,7 +49,7 @@ $ git clone --recursive https://github.com/nvlabs/instant-ngp
 $ cd instant-ngp
 ```
 
-Then, use CMake to build the project:
+Then, use CMake to build the project: (on Windows, this must be in a [developer command prompt](https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?view=msvc-160#developer_command_prompt))
 ```sh
 instant-ngp$ cmake . -B build
 instant-ngp$ cmake --build build --config RelWithDebInfo -j 16
@@ -93,7 +95,7 @@ Alternatively, download any NeRF-compatible scene (e.g. [from the NeRF authors' 
 Now you can run:
 
 ```sh
-instant-ngp$ ./build/testbed --scene data/nerf_synthetic/lego
+instant-ngp$ ./build/testbed --scene data/nerf_synthetic/lego/transforms_train.json
 ```
 
 For more information about preparing datasets for use with our NeRF implementation, please see [this document](docs/nerf_dataset_tips.md).
@@ -146,8 +148,8 @@ Before investigating further, make sure all submodules are up-to-date and try co
 instant-ngp$ git submodule sync --recursive
 instant-ngp$ git submodule update --init --recursive
 ```
-If __instant-ngp__ still fails to compile, make sure your CUDA, CMake and compiler versions match [the requirements](https://github.com/NVlabs/instant-ngp#requirements) and look for your problem in the following table.
-If you cannot find it there, please feel free to [open an issue](https://github.com/NVlabs/instant-ngp/issues/new) and ask for help.
+If __instant-ngp__ still fails to compile, update CUDA as well as your compiler to the latest versions you can install on your system. It is crucial that you update _both_, as newer CUDA versions are not always compatible with earlier compilers and vice versa.
+If your problem persists, consult the following table of known issues.
 
 | Problem | Resolution |
 |---------|------------|
@@ -158,9 +160,12 @@ If you cannot find it there, please feel free to [open an issue](https://github.
 | __Compile error:__ too few arguments in function call | Update submodules with the above two `git` commands. ([#37](https://github.com/NVlabs/instant-ngp/issues/37) [#52](https://github.com/NVlabs/instant-ngp/issues/52)) |
 | __Python error:__ No module named 'pyngp' | It is likely that CMake did not detect your Python installation and therefore did not build `pyngp`. Check CMake logs to verify this. If `pyngp` was built in a different folder than `instant-ngp/build`, Python will be unable to detect it and you have to supply the full path to the import statement. ([#43](https://github.com/NVlabs/instant-ngp/issues/43)) |
 
+If you cannot find your problem in the table, please feel free to [open an issue](https://github.com/NVlabs/instant-ngp/issues/new) and ask for help.
+
 ## Thanks
 
-Many thanks to [Jonathan Tremblay](https://research.nvidia.com/person/jonathan-tremblay) and [Andrew Tao](https://developer.nvidia.com/blog/author/atao/) for testing early versions of this codebase and to Arman Toornias and Saurabh Jain for the factory robot dataset.
+Many thanks to [Jonathan Tremblay](https://research.nvidia.com/person/jonathan-tremblay) and [Andrew Tao](https://developer.nvidia.com/blog/author/atao/) for testing early versions of this codebase and to Arman Toorians and Saurabh Jain for the factory robot dataset.
+We also thank [Andrew Webb](https://github.com/grey-area) for noticing that one of the prime numbers in the spatial hash was not actually prime; this has been fixed since.
 
 This project makes use of a number of awesome open source libraries, including:
 * [tiny-cuda-nn](https://github.com/NVlabs/tiny-cuda-nn) for fast CUDA MLP networks
