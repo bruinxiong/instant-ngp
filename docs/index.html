@@ -174,7 +174,7 @@ figure {
 
   display: inline-block;
   margin: 8px;
-  padding: 8px 8px;
+  padding: 8px 18px;
 
   border-width: 0;
   outline: none;
@@ -183,7 +183,8 @@ figure {
   background-color: #1367a7;
   color: #ecf0f1 !important;
   font-size: 20px;
-  width: 100px;
+  width: auto;
+  height: auto;
   font-weight: 600;
 }
 .paper-btn-parent {
@@ -213,7 +214,7 @@ figure {
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:creator" content="@mmalex">
 	<meta name="twitter:title" content="Instant Neural Graphics Primitives with a Multiresolution Hash Encoding">
-	<meta name="twitter:description" content="A new paper from NVIDIA Research which presents a method for instant training & rendering of high-quality neural graphics primitives.">
+	<meta name="twitter:description" content="A paper from NVIDIA Research which presents a method for instant training & rendering of high-quality neural graphics primitives.">
 	<meta name="twitter:image" content="https://nvlabs.github.io/instant-ngp/assets/twitter.jpg">
 </head>
 
@@ -235,6 +236,10 @@ figure {
 			<div class="col-1 text-center">NVIDIA</div>
 		</div>
 
+		<div class="affil-row">
+			<div class="venue text-center"><b><a href="https://s2022.siggraph.org">ACM Transactions on Graphics (SIGGRAPH 2022)</a></b></div>
+		</div>
+
 		<div style="clear: both">
 			<div class="paper-btn-parent">
 				<a class="paper-btn" href="assets/mueller2022instant.pdf">
@@ -244,6 +249,14 @@ figure {
 				<a class="paper-btn" href="assets/mueller2022instant.mp4">
 					<span class="material-icons"> videocam </span>
 					Video
+				</a>
+				<a class="paper-btn" href="https://tom94.net/data/publications/mueller22instant/mueller22instant-gtc.mp4">
+					<span class="material-icons"> videocam </span>
+					Presentation
+				</a>
+				<a class="paper-btn" href="https://tom94.net/data/publications/mueller22instant/mueller22instant-rtl.mp4">
+					<span class="material-icons"> videocam </span>
+					Real-Time Live
 				</a>
 				<a class="paper-btn" href="https://github.com/NVlabs/instant-ngp">
 					<span class="material-icons"> code </span>
@@ -290,6 +303,7 @@ figure {
 				<b>NeRF</b> <a href="https://www.matthewtancik.com/nerf">[Mildenhall et al. 2020]</a> uses 2D images and their camera poses to reconstruct a volumetric radiance-and-density field that is visualized using ray marching.
 				Lastly, <b>neural volume</b> learns a denoised radiance and density field directly from a volumetric path tracer.
 				In all tasks, our encoding and its efficient implementation provide clear benefits: instant training, high quality, and simplicity. Our encoding is task-agnostic: we use the same implementation and hyperparameters across all tasks and only vary the hash table size which trades off quality and performance.
+				Girl With a Pearl Earring renovation &copy;Koorosh Orooj (<a href="http://profoundism.com/free_licenses.html">CC BY-SA 4.0</a>)
 			</p>
 		</figure>
 	</section>
@@ -298,6 +312,9 @@ figure {
 		<h2>News</h2>
 		<hr>
 		<div class="row">
+			<div><span class="material-icons"> emoji_events </span> [Nov 10th 2022] Listed in <a href="https://developer.nvidia.com/blog/time-magazine-names-nvidia-instant-nerf-a-best-invention-of-2022/">TIME's Best Inventions of 2022</a>.</div>
+			<div><span class="material-icons"> emoji_events </span> [July 7th 2022] Paper won the <a href="https://blog.siggraph.org/2022/07/siggraph-2022-technical-papers-awards-best-papers-and-honorable-mentions.html/">SIGGRAPH Best Paper Award</a>.</div>
+			<div><span class="material-icons"> description </span> [May 3rd 2022] Paper accepted to <a href="https://s2022.siggraph.org">ACM Transactions on Graphics (SIGGRAPH 2022)</a>.</div>
 			<div><span class="material-icons"> description </span> [Jan 19th 2022] Paper released on <a href="https://arxiv.org/abs/2201.05989">arXiv</a>.</div>
 			<div><span class="material-icons"> integration_instructions </span> [Jan 14th 2022] Code released on <a href="https://github.com/NVlabs/instant-ngp">GitHub</a>.</div>
 		</div>
@@ -325,7 +342,8 @@ figure {
 			</video>
 		</figure>
 		<p class="caption_justify">
-			Real-time training progress on the image task where the neural network learns the mapping from 2D coordinates to RGB colors of a high-resolution image. Note that in this video, the network is trained from scratch—but converges so quickly you may miss it if you blink!<br/>
+			Real-time training progress on the image task where the neural network learns the mapping from 2D coordinates to RGB colors of a high-resolution image. Note that in this video, the network is trained from scratch—but converges so quickly you may miss it if you blink!
+			Image &copy;Trevor Dobson (<a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">CC BY-NC-ND 2.0</a>)<br/>
 		</p>
 
 		<h3>Neural Radiance Fields</h3>
@@ -388,7 +406,7 @@ figure {
 				Your browser does not support the video tag.
 			</video>
 			<p class="caption">
-				Real-time training progress on eight synthetic NeRF datsets.
+				Real-time training progress on eight synthetic NeRF datsets.<br/>Drums model &copy;bryanajones (<a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>), Lego model &copy;Håvard Dalen (<a href="https://creativecommons.org/licenses/by-nc/2.0/">CC BY-NC 2.0</a>), Ship model &copy;gregzaal (<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>)
 			</p>
 		</figure>
 
@@ -416,7 +434,8 @@ figure {
 				Your browser does not support the video tag.
 			</video>
 			<p class="caption">
-				We also support training NeRF-like radiance fields from the noisy output of a volumetric path tracer. Rays are fed in real-time to the network during training, which learns a denoised radiance field.
+				We also support training NeRF-like radiance fields from the noisy output of a volumetric path tracer. Rays are fed in real-time to the network during training, which learns a denoised radiance field.<br/>
+				Cloud model &copy;Walt Disney Animation Studios (<a href="https://media.disneyanimation.com/uploads/production/data_set_asset/6/asset/License_Cloud.pdf">CC BY-SA 3.0</a>)
 			</p>
 		</figure>
 
@@ -430,6 +449,7 @@ figure {
 		</figure>
 		<p class="caption_justify">
 			Real-time training progress on various SDF datsets. Training data is generated on the fly from the ground-truth mesh using the <a href="https://developer.nvidia.com/optix">NVIDIA OptiX raytracing framework</a>.
+			Bearded Man model &copy;Oliver Laric (<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>)
 		</p>
 
 		<h3>Neural Radiance Cache</h3>
@@ -457,7 +477,7 @@ figure {
 				<p><b>Instant Neural Graphics Primitives with a Multiresolution Hash Encoding</b></p>
 				<p>Thomas Müller, Alex Evans, Christoph Schied, Alexander Keller</p>
 
-				<div><span class="material-icons"> description </span><a href="assets/mueller2022instant.pdf"> Paper preprint (PDF, 15.3 MB)</a></div>
+				<div><span class="material-icons"> description </span><a href="assets/mueller2022instant.pdf"> Paper preprint (PDF, 17.7 MB)</a></div>
 				<div><span class="material-icons"> description </span><a href="https://arxiv.org/abs/2201.05989"> arXiv version</a></div>
 				<div><span class="material-icons"> insert_comment </span><a href="assets/mueller2022instant.bib"> BibTeX</a></div>
 				<div><span class="material-icons"> integration_instructions </span><a href="https://github.com/NVlabs/instant-ngp"> Code</a></div>
@@ -472,11 +492,21 @@ figure {
 		<h2>Citation</h2>
 		<hr>
 		<pre><code>@article{mueller2022instant,
-    title = {Instant Neural Graphics Primitives with a Multiresolution Hash Encoding},
     author = {Thomas M\"uller and Alex Evans and Christoph Schied and Alexander Keller},
-    journal = {arXiv:2201.05989},
+    title = {Instant Neural Graphics Primitives with a Multiresolution Hash Encoding},
+    journal = {ACM Trans. Graph.},
+    issue_date = {July 2022},
+    volume = {41},
+    number = {4},
+    month = jul,
     year = {2022},
-    month = jan
+    pages = {102:1--102:15},
+    articleno = {102},
+    numpages = {15},
+    url = {https://doi.org/10.1145/3528223.3530127},
+    doi = {10.1145/3528223.3530127},
+    publisher = {ACM},
+    address = {New York, NY, USA}
 }
 </code></pre>
 	</section>
@@ -487,32 +517,37 @@ figure {
 		<div class="row">
 			<p>
 			We would like to thank
-			<a href="https://tovacinni.github.io">Towaki Takikawa</a>,
-			<a href="https://luebke.us/">David Luebke</a>,
-			<a href="https://luminohope.org/">Koki Nagano</a> and
-			<a href="https://research.nvidia.com/person/nikolaus-binder">Nikolaus Binder</a> for profound discussions, and
 			<a href="https://anjulpatney.com/">Anjul Patney</a>,
+			<a href="https://luebke.us/">David Luebke</a>,
 			<a href="https://research.nvidia.com/person/jacob-munkberg">Jacob Munkberg</a>,
 			<a href="http://granskog.xyz/">Jonathan Granskog</a>,
 			<a href="https://www.cs.mcgill.ca/~jtremb59/">Jonathan Tremblay</a>,
+			<a href="https://luminohope.org/">Koki Nagano</a>,
 			<a href="https://research.nvidia.com/person/marco-salvi">Marco Salvi</a>,
-			<a href="https://www.cs.toronto.edu/~jlucas/">James Lucas</a> and
+			<a href="https://research.nvidia.com/person/nikolaus-binder">Nikolaus Binder</a>,
+			<a href="https://www.cs.toronto.edu/~jlucas/">James Lucas</a>, and
 			<a href="https://tovacinni.github.io">Towaki Takikawa</a>
 			for proof-reading, feedback, profound discussions, and early testing.
 			We also thank <a href="https://joeylitalien.github.io/">Joey Litalien</a> for providing us with the framework for this website.
 			<br/>
 			<br/>
-			<em>Girl With a Pearl Earing</em> renovation by Koorosh Orooj <a href="http://profoundism.com/free_licenses.html">(CC BY-SA 4.0 License)</a>
+			<em>Girl With a Pearl Earring</em> renovation &copy;Koorosh Orooj (<a href="http://profoundism.com/free_licenses.html">CC BY-SA 4.0</a>)
 			<br/>
-			<em>Tokyo</em> gigapixel photograph by Trevor Dobson <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">(CC BY-NC-ND 2.0 License)</a>
+			<em>Tokyo</em> gigapixel image &copy;Trevor Dobson (<a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">CC BY-NC-ND 2.0</a>)
+			<br/>
+			<em>Detailed Drum Set</em> &copy;bryanajones (<a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>)
+			<br/>
+			<em>Lego 856 Bulldozer</em> &copy;Håvard Dalen (<a href="https://creativecommons.org/licenses/by-nc/2.0/">CC BY-NC 2.0</a>)
+			<br/>
+			<em>Suzanne's Revenge</em> ship &copy;gregzaal (<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA 2.0</a>)
 			<br/>
 			<em>Lucy</em> model from the <a href="http://graphics.stanford.edu/data/3Dscanrep/">Stanford 3D scan repository</a>
 			<br/>
-			<em>Factory robot</em> dataset by Arman Toorians and Saurabh Jain.
+			<em>Factory robot</em> dataset by Arman Toorians and Saurabh Jain
 			<br/>
-			<em>Disney Cloud</em> model by Walt Disney Animation Studios. (<a href="https://media.disneyanimation.com/uploads/production/data_set_asset/6/asset/License_Cloud.pdf">CC BY-SA 3.0</a>)
+			<em>Disney Cloud</em> model &copy;Walt Disney Animation Studios (<a href="https://media.disneyanimation.com/uploads/production/data_set_asset/6/asset/License_Cloud.pdf">CC BY-SA 3.0</a>)
 			<br/>
-			<em>Bearded Man</em> model by Oliver Laric. (<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>)
+			<em>Bearded Man</em> model &copy;Oliver Laric (<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a>)
 			</p>
 		</div>
 	</section>
